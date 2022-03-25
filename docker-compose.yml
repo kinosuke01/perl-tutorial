@@ -1,0 +1,6 @@
+services:
+  perl:
+    image: perl:latest
+    volumes:
+        - .:/app/
+    tty: true
