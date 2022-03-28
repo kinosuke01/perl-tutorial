@@ -108,10 +108,6 @@ my $user;
 $user = User->new(first_name => 'Jiro', last_name => 'Suzuki');
 $user->say();
 
-# with
-
-# テスト
-
 # $@
 # evalで例外をキャッチした場合に内容が保存される変数
 
