@@ -5,6 +5,10 @@ package My::Main;
 use strict;   # 安全でない構文でエラーさせる
 use warnings; # 選択的な警告を調整？？
 
+# モジュール探索パス@INCにlibを追加
+use FindBin;
+use lib "$FindBin::Bin/lib";
+
 =begin
 コメント
 コメント
@@ -92,11 +96,19 @@ print $date, "\n";
 use Cwd;
 print getcwd(), "\n";
 
-# オブジェクト指向
-# extends
+# モジュールの読み込み
+# インスタンス化とメソッド実行
+use Person;
+my $person;
+$person = Person->new(first_name => 'Taro', last_name => 'Yamada');
+$person->say();
+
+use User;
+my $user;
+$user = User->new(first_name => 'Jiro', last_name => 'Suzuki');
+$user->say();
+
 # with
-# アロー演算子
-# CPAN
 
 # テスト
 
