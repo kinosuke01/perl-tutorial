@@ -20,11 +20,22 @@ my $x = "Perl";
 print "Hello, $x\n";
 
 # if文
+# 数値比較
 my $a = 5;
 if ($a > 3) {
      print "$a > 3\n";
 } else {
     print "$a <= 3\n";
+}
+
+# 文字列比較
+my $str = "abcde";
+# 等しい場合
+if ($str eq "abcde") {
+    print "$str eq abcde\n";
+# 異なる場合
+} elsif ($str ne "abcde") {
+    print "$str ne abcde\n";
 }
 
 # 繰り返し
@@ -95,18 +106,6 @@ print $date, "\n";
 # モジュール名は先頭が大文字
 use Cwd;
 print getcwd(), "\n";
-
-# モジュールの読み込み
-# インスタンス化とメソッド実行
-use Person;
-my $person;
-$person = Person->new(first_name => 'Taro', last_name => 'Yamada');
-$person->say();
-
-use User;
-my $user;
-$user = User->new(first_name => 'Jiro', last_name => 'Suzuki');
-$user->say();
 
 # $@
 # evalで例外をキャッチした場合に内容が保存される変数
