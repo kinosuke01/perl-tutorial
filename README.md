@@ -1,5 +1,6 @@
 ## 基本構文
 - https://xtech.nikkei.com/it/article/COLUMN/20081113/319144/
+- https://perlzemi.com/blog/20100930127859.html
 
 ## オブジェクト指向
 - https://perldoc.jp/docs/modules/Moose

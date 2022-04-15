@@ -1,3 +1,10 @@
+use strict;
+use warnings;
+
+# モジュール探索パス@INCにlibを追加
+use FindBin;
+use lib "$FindBin::Bin/lib";
+
 # モジュールの読み込み
 # インスタンス化とメソッド実行
 use Person;
