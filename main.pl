@@ -41,6 +41,15 @@ sub base {
         print " ";
     }
     print "\n";
+
+    my $i;
+    for ($i = 0; $i < 100; $i++) {
+        if ($i > 50) {
+            print "\n";
+            last; # break;
+        }
+        print $i . ",";
+    }
 }
 base();
 
@@ -116,18 +125,43 @@ sub reference {
     # $x はスカラー値
     # リファレンスは配列やハッシュのポインタでスカラー値
 
-    my @nums = (1,2,3);          # 配列の作成
-    my $nums_ref = \@nums;       # 配列のリファレンスの作成
-    my $nums_ref = [1,2,3];      # 無名リファレンスの作成
-    my @nums = @{$nums_ref};     # リファレンスから配列実体を取得
-    print @nums[0] . "\n";       # 実体から要素参照
-    print $nums_ref->[0] . "\n"; # リファレンスから要素参照
+    my @nums = (1,2,3);      # 配列の作成
+    my $nums = \@nums;       # 配列のリファレンスの作成
+    my $nums = [1,2,3];      # 無名リファレンスの作成
+    my @nums = @{$nums};     # リファレンスから配列実体を取得
+    print @nums[0] . "\n";   # 実体から要素参照
+    print $nums->[0] . "\n"; # リファレンスから要素参照
 
     # 配列の要素はスカラー値のみなので、
     # 二次元配列にはリファレンスを登録する
     my @persons1 = ("A", "B", "C");
     my @persons2 = ("X", "Y", "Z");
-    my @person_group = (\@persons1, \@persons2);
+    my @person_group = ();
+    push(@person_group, \@persons1);
+    push(@person_group, \@persons2);
+    print "person_group.0.0 is " . @person_group[0]->[0] . "\n";
+
+    my %user = (         # ハッシュの作成
+        first_name => 'Taro',
+        last_name  => 'Yamada',
+    ); 
+    my $user = \%user;   # ハッシュのリファレンス作成
+    my $user = {         # 無名リファレンスからの作成
+        first_name => 'Taro',
+        last_name  => 'Yamada',
+    };
+    my %user = %{$user};              # リファレンスから実体を取り出す
+    print %user{first_name} . "\n";   # 実体からの要素参照
+    print $user->{first_name} . "\n"; # リファレンスからの要素参照
+
+    # ハッシュの要素はスカラー値のみなので、
+    # 入れ子ハッシュにはリファレンスを登録する
+    my $user1 = {first_name => 'Taro', last_name => 'Yamada'};
+    my $user2 = {first_name => 'Jiro', last_name => 'Suzuki'};
+    my $user_group = {};
+    $user_group->{user1} = $user1;
+    $user_group->{user2} = $user2;
+    print "user_group.user2.last_name is " . $user_group->{user2}->{last_name} . "\n";
 }
 reference();
 
