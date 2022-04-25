@@ -165,6 +165,26 @@ sub reference {
 }
 reference();
 
+sub strftime {
+    my ($sec, $min, $hour, $day, $month, $year, $wday, $yday, $isdst) = localtime;
+
+    # localtime関数からは1900年から数えた年が返却される。
+    $year += 1900;
+
+    # 月は0から始まるので、表示するときは1を加える。
+    $month++;
+
+    my $str = $year
+                .sprintf("%02d", $month)
+                .sprintf("%02d", $day)
+                .sprintf("%02d", $hour)
+                .sprintf("%02d", $min)
+                .sprintf("%02d", $sec);
+    print $str;
+    print "\n";
+}
+strftime();
+
 # $@
 # evalで例外をキャッチした場合に内容が保存される変数
 
